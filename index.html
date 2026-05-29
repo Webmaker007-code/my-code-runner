@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Code Runner</title>
 
+  <style>
+    body {
+      margin: 0;
+      background: #1e1e1e;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #2d2d2d;
+      padding: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .toolbar {
+      padding: 10px;
+      background: #252526;
+      display: flex;
+      gap: 10px;
+    }
+
+    button {
+      background: #0078d7;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #005ea8;
+    }
+
+    textarea {
+      flex: 1;
+      width: 100%;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      border: none;
+      resize: none;
+      padding: 15px;
+      font-family: monospace;
+      font-size: 14px;
+      outline: none;
+    }
+
+    iframe {
+      flex: 1;
+      border: none;
+      background: white;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    .editor, .preview {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .label {
+      background: #333;
+      padding: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>Mini Website Code Runner</header>
+
+<div class="toolbar">
+  <button onclick="runCode()">Run Code</button>
+  <button onclick="clearCode()">Clear</button>
+</div>
+
+<div class="container">
+
+  <div class="editor">
+    <div class="label">Code Editor</div>
+
+    <textarea id="code">
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Hello World!</h1>
+
+<button onclick="alert('Button works!')">
+  Click Me
+</button>
+
+</body>
+</html>
+    </textarea>
+  </div>
+
+  <div class="preview">
+    <div class="label">Preview</div>
+
+    <iframe id="preview"></iframe>
+  </div>
+
+</div>
+
+<script>
+function runCode() {
+  const code = document.getElementById("code").value;
+  const preview = document.getElementById("preview");
+
+  preview.srcdoc = code;
+}
+
+function clearCode() {
+  document.getElementById("code").value = "";
+}
+
+runCode();
+</script>
+
+</body>
+</html>
